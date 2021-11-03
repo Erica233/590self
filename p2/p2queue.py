@@ -68,7 +68,7 @@ class Queue:
         self.queue = self.queue[self.front:] + self.queue[:self.front] + [None for x in range(self.numElems, 2 * self.numElems)]
         self.rear = self.numElems
         self.front = 0
-        print("resize: rear", self.rear)
+        #print("resize: rear", self.rear)
         return
 
     """
@@ -95,5 +95,7 @@ class Queue:
         pop_val = self.queue[self.front]
         self.queue[self.front] = None
         self.front += 1
+        if self.front >= len(self.queue):
+            self.front = 0
         self.numElems -= 1
         return pop_val
